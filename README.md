@@ -5,7 +5,7 @@ Don't hesitate to contribute to the repo ;)
 ## Summary
 
 <!-- - [A Parable by Sir Arthur Conan Doyle](#a-parable) -->
-- [The Zen of Python](#the-zen-of-python)🐍
+- [The Zen of Python](#the-zen-of-python) 🐍
 - [Keyboard's shortcuts (Mac)](#keyboards-shortcuts-mac)
   - [Sublime Text](#sublime-text)
   - [Terminal](#terminal)
@@ -19,6 +19,7 @@ Don't hesitate to contribute to the repo ;)
   - [How to merge your branch to the master branch](#how-to-merge-your-branch-to-the-master-branch)
   - [How to solve your conflicts](#how-to-solve-your-conflicts)
   - [How to fix an accidental commit to master](#how-to-fix-an-accidental-commit-to-master)
+- [Mastering pandas](#mastering-pandas)
 - [Prerequisite warmup](#prerequisite-warmup)
 - [Interesting posts](#interesting-posts)
 - [Useful resources](#useful-resources)
@@ -318,6 +319,67 @@ git:(master)                               git reset HEAD~ --hard
 git:(some-new-branch-name)                 git checkout some-new-branch-name
 # Your commit lives in this branch now
 ```
+
+## Mastering Pandas
+
+#### [10 minutes to pandas](https://pandas.pydata.org/pandas-docs/stable/getting_started/10min.html)
+
+#### [Pandas Cheat Sheet](https://github.com/pandas-dev/pandas/blob/master/doc/cheatsheet/Pandas_Cheat_Sheet.pdf)
+
+Below a small demonstration of main Pandas methods
+
+```python3
+# For printed results in Jupyter notebooks
+pd.set_option("display.precision", 2)
+pd.set_option('display.max_columns', 100)
+pd.set_option('display.max_rows', 100)
+
+# Basic methods
+df = pd.read_csv('../data/file.csv')
+df.head()
+df.shape()
+df.columns()
+df.info()
+df.describe() # for non-numerical features, add include=['object', 'bool']
+df['Age'].value_counts() # to calculate fractions, add normalize=True
+
+# Data types: bool, int64, float64 or object
+df['Height'] = df['Height'].astype('int64')
+
+# Sorting
+df.sort_values(by='Age', ascending=False)
+df.sort_values(by=['Age', 'Height], ascending=[True, False])
+
+# Indexing and retrieving data
+df['Height'].mean()
+df[df['Age'] == 25].mean()
+df[(df['Age'] == 25) & (df['Height'] < 185)]['Total minutes played'].mean()
+df.loc[0:4, 'Age':'City'] # indexing by name, 4 and 'City' are inclusive
+df.iloc[0:4, 0:5] # indexing by number, 4 and 5 are inclusive
+df[-1:] # last line of the dataframe
+
+# Applying and mapping functions
+df.apply(np.max)
+df[df['City'].apply(lambda city: city[0] == 'P')].head() # cities starting with P
+df['column_name'] = df['column_name'].map({old_value: new_value})
+SAME AS
+df['column_name'] = df.replace({'column_name': {old_value: new_value}})
+
+# Grouping
+df.groupby(['Team'])[columns_to_show].describe(percentiles=[])
+SAME AS
+df.groupby(['Team'])[columns_to_show].agg([np.mean, np.std, np.min, np.max])
+
+# Summary tables
+pd.crosstab(df['Team'], df['Height']) # may add normalize=True
+df.pivot_table(['Age', 'Height'], ['Team'], aggfunc='mean')
+
+# Transformations
+df['X_total'] = df['X1'] + df['X2']
+df.drop(['X1', 'X2'], axis=1, inplace=True) # got rid of columns
+df.drop([1, 2]).head() # got rid of rows
+```
+
 ## Prerequisite warmup
 
 ####  Kaggle Learn, DataQuest [[Part1](https://www.dataquest.io/course/python-for-data-science-fundamentals/)/[Part2](https://www.dataquest.io/course/python-for-data-science-intermediate/)/[Part3](https://www.dataquest.io/course/pandas-fundamentals/)], CodeAcademy
