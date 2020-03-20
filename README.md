@@ -309,13 +309,13 @@ When you committed some changes to `master` and wanted to commit them to a new b
 
 ```dash
 # First, create a new branch from the current state of master
-git:(master)               git checkout -b some-new-branch-name
+git:(master)                               git checkout -b some-new-branch-name
 
 # Remove the commit from the master branch
-git:(some-new-branch-name) git checkout master
-git:(master)               git reset HEAD~ --hard
+git:(some-new-branch-name)                 git checkout master
+git:(master)                               git reset HEAD~ --hard
 
-git:(some-new-branch-name) git checkout some-new-branch-name
+git:(some-new-branch-name)                 git checkout some-new-branch-name
 # Your commit lives in this branch now
 ```
 ## Prerequisite warmup
@@ -326,7 +326,7 @@ Learn the basics of programming languages (Python, SQL)
 #### [Essential Math for Data Science](https://hadrienj.github.io/), by Hadrien Jean
 Basics of calculus, linear algebra, optimization and statistics are essential to understand the toolset you’re going to use. (Disclosure: I know the guy, and he's gold.)
 
-#### 3blue1brown ([Essence of linear algebra](https://www.youtube.com/playlist?list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab)/[Essence of calculus](https://www.youtube.com/playlist?list=PLZHQObOWTQDMsr9K-rj53DwVRMYO3t5Yr)/[Neural Networks](https://www.youtube.com/playlist?list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi)),  by Grant Sanderson,
+#### 3blue1brown ([Essence of linear algebra](https://www.youtube.com/playlist?list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab)/[Essence of calculus](https://www.youtube.com/playlist?list=PLZHQObOWTQDMsr9K-rj53DwVRMYO3t5Yr)/[Neural Networks](https://www.youtube.com/playlist?list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi)),  by Grant Sanderson
 Some combination of math and entertainment. The goal is for explanations to be driven by animations and for difficult problems to be made simple with changes in perspective. BIG MVP!!!
 
 #### [What REALLY is Data Science? Told by a Data Scientist](https://youtu.be/xC-c7E5PK0Y)
