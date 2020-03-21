@@ -25,6 +25,27 @@ Don't hesitate to contribute to the repo ;)
 - [Useful resources](#useful-resources)
 - [Going further](#going-further)
 
+<!-- ## A Parable
+
+The cheese-mites asked how the cheese got there,\
+And warmly debated the matter;\
+The Orthodox said that it came from the air,\
+And the Heretics said from the platter.\
+They argued it long and they argued it strong,\
+And I hear they are arguing now;\
+But of all the choice spirits who lived in the cheese,\
+Not one of them thought of a cow.
+
+BY SIR ARTHUR CONAN DOYLE
+
+Cast your eyes in the direction of the cow. 🐄 -->
+
+<!-- <div align="center">
+
+![cow](https://github.com/hervelao/my-data-science-tool-belt/blob/master/img/cow.jpg)
+
+</div> -->
+
 ## The Zen of Python
 
 Beautiful is better than ugly.\
@@ -46,27 +67,6 @@ Although never is often better than *right* now.\
 If the implementation is hard to explain, it's a bad idea.\
 If the implementation is easy to explain, it may be a good idea.\
 Namespaces are one honking great idea -- let's do more of those!
-
-<!-- ## A Parable
-
-The cheese-mites asked how the cheese got there,\
-And warmly debated the matter;\
-The Orthodox said that it came from the air,\
-And the Heretics said from the platter.\
-They argued it long and they argued it strong,\
-And I hear they are arguing now;\
-But of all the choice spirits who lived in the cheese,\
-Not one of them thought of a cow.
-
-BY SIR ARTHUR CONAN DOYLE
-
-Cast your eyes in the direction of the cow. 🐄 -->
-
-<!-- <div align="center">
-
-![cow](https://github.com/hervelao/my-data-science-tool-belt/blob/master/img/cow.jpg)
-
-</div> -->
 
 ## Keyboard's shortcuts (Mac)
 
@@ -380,6 +380,113 @@ df.drop(['X1', 'X2'], axis=1, inplace=True) # got rid of columns
 df.drop([1, 2]).head() # got rid of rows
 ```
 
+## Mastering Data Visualization
+
+#### [Data to Viz](https://www.data-to-viz.com/)
+Leads you to the most appropriate graph for your data. It links to the code to build it and lists common caveats you should avoid.
+
+2 interfaces for plotting:
+- MATLAB style plotting using pyplot (METHOD 1);
+- Object Oriented Interface (METHOD 2).
+
+**METHOD 1** ([doc](https://matplotlib.org/3.1.1/api/_as_gen/matplotlib.pyplot.html#module-matplotlib.pyplot))
+```python3
+plt.figure(figsize=(12, 8))
+plt.plot(x, y**2, c='black', lw=3, ls='--', label='quadratic')
+plt.plot(x, y**3, c='pink', lw=3, ls='--', label='cubic')
+plt.title('title 1')
+plt.xlabel('axe x')
+plt.ylabel('axe y')
+plt.legend()
+plt.show()
+plt.savefig('my_fig.png') # vector pdf image might be interesting
+
+# To divide the figure in a 2x1 grid
+plt.subplot(2,1,1)
+plt.plot(x, y, c='orange')
+plt.subplot(2,1,2)
+plt.plot(x, y, c='blue')
+```
+
+**METHOD 2** ([doc](https://matplotlib.org/api/axes_api.html#axis-labels-title-and-legend))
+```python3
+# Get an empty figure, a fig object can contain one or more axes objects
+fig = plt.figure()
+
+# Get the axes instance at 1st location in 1x1 grid, one axes represents one plot inside fig
+# fig.add_subplot(2,2,1) would generate a grid of 2x2 subplots and and get for 1st location
+ax = fig.add_subplot(1,1,1)
+
+# Generate the plot
+ax.plot(x, y)
+
+# Set labels for x and y axis
+ax.set_xlabel('X label')
+ax.set_ylabel('Y label')
+
+# Set title for the plot
+ax.set_title('Title')
+
+# Display the figure
+plt.show()
+
+# Another way to do it could be: fig, ax = plt.subplots(2, 1, sharex=True)
+```
+
+Below a small demonstration of the main graphics and tables that can be used
+
+```python3
+# Import visualization libraries
+import matplotlib.pyplot as plt
+import seaborn as sns; sns.set()
+%config InlineBackend.figure_format = 'retina' # Graphics are more sharp. 'svg'/'png'
+
+# Histograms and density plots
+df[features].hist(figsize=(10, 4));
+df[features].plot(kind='density', subplots=True, layout=(1, 2),
+                sharex=False, figsize=(10, 4));
+sns.distplot(df['feature']);
+
+# Box plot
+sns.boxplot(x='feature', data=df);
+
+# Violin plot
+_, axes = plt.subplots(1, 2, sharey=True, figsize=(6, 4))
+sns.boxplot(data=df['feature'], ax=axes[0]);
+sns.violinplot(data=df['feature'], ax=axes[1]);
+
+# Bar plot
+_, axes = plt.subplots(nrows=1, ncols=2, figsize=(12, 4))
+sns.countplot(x='cat_feat_1', data=df, ax=axes[0]); # can add "hue" for another cat_feat
+sns.countplot(x='cat_feat_2', data=df, ax=axes[1]);
+
+# Correlation matrix
+corr_matrix = df[num_features].corr()
+sns.heatmap(corr_matrix);
+
+# Scatter plot and Scatter plot matrix
+plt.scatter(df['X1'], df['X2']);
+sns.jointplot(x='X1', y='X2', data=df, kind='scatter');
+sns.jointplot('X1', 'X2', data=df, kind="kde", color="g");
+sns.pairplot(df[numerical]);
+
+# Plot with categories
+sns.lmplot('X1', 'X2', data=df, hue='cat_feat', fit_reg=False);
+fig, axes = plt.subplots(nrows=3, ncols=4, figsize=(10, 7))
+for idx, feat in enumerate(numerical):
+    ax = axes[int(idx / 4), idx % 4]
+    sns.boxplot(x='cat', y=feat, data=df, ax=ax)
+    ax.set_xlabel('')
+    ax.set_ylabel(feat)
+fig.tight_layout();
+_, axes = plt.subplots(1, 2, sharey=True, figsize=(10, 4))
+sns.boxplot(x='cat_feat', y='num_feat', data=df, ax=axes[0]);
+sns.violinplot(x='cat_feat', y='num_feat', data=df, ax=axes[1]);
+sns.catplot(x='cat_feat_1', y='num_feat', col='cat_feat_2',
+               data=df[df['cat_feat_2'] < 3], kind="box",
+               col_wrap=4, height=3, aspect=.8);
+```
+
 ## Prerequisite warmup
 
 ####  Kaggle Learn, DataQuest [[Part1](https://www.dataquest.io/course/python-for-data-science-fundamentals/)/[Part2](https://www.dataquest.io/course/python-for-data-science-intermediate/)/[Part3](https://www.dataquest.io/course/pandas-fundamentals/)], CodeAcademy
@@ -409,9 +516,6 @@ Webcomics of romance, sarcasm, science, and language by Randall Munroe and Zach 
 
 #### [Morning Brew](https://www.morningbrew.com/daily/r/?kid=450c54be) & [Emerging Tech Brew](https://www.morningbrew.com/emerging-tech/r/?kid=450c54be)
 The daily email newsletter covering the latest news from Wall St. to Silicon Valley. Informative, witty, and everything you need to start your day.
-
-#### [Data to Viz](https://www.data-to-viz.com/)
-Leads you to the most appropriate graph for your data. It links to the code to build it and lists common caveats you should avoid.
 
 #### [Projector Tensorflow](https://projector.tensorflow.org/)
 Visualize data like you have never seen it before.
