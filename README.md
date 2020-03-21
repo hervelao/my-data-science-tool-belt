@@ -1,5 +1,5 @@
 # my-data-science-tool-belt
-**NOTICE:** This repository is aimed to help students better understand Data Science.
+**NOTICE:** This repository may help students better navigate in the Machine Learning seas!.
 Don't hesitate to contribute to the repo ;)
 
 ## Summary
@@ -19,7 +19,7 @@ Don't hesitate to contribute to the repo ;)
   - [How to merge your branch to the master branch](#how-to-merge-your-branch-to-the-master-branch)
   - [How to solve your conflicts](#how-to-solve-your-conflicts)
   - [How to fix an accidental commit to master](#how-to-fix-an-accidental-commit-to-master)
-- [Mastering pandas](#mastering-pandas)
+- [Mastering Pandas](#mastering-pandas)
 - [Mastering Data Visualization](#mastering-data-visualization)
 - [Prerequisite warmup](#prerequisite-warmup)
 - [Interesting posts](#interesting-posts)
