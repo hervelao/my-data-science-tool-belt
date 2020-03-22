@@ -91,7 +91,7 @@ reopen last tab closed                     # cmd + shift + T
 navigate to tab on the right               # cmd + alt + →
 navigate to tab on the left                # cmd + alt + ←
 duplicate line                             # cmd + shift + D
-split view into two columns                # cmd + option + 2
+split view into two columns                # cmd + alt + 2
 (un)toggle sidebar                         # cmd + K, cmd + B
 select similar words                       # cmd + shift + G
 put cursor in several places               # cmd + click
