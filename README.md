@@ -377,6 +377,8 @@ df.pivot_table(['Age', 'Height'], ['Team'], aggfunc='mean')
 
 # Transformations
 df['X_total'] = df['X1'] + df['X2']
+df['X_total'] = df.apply(lambda row: row.X1 + row.X2, axis=1)
+df["Player_height_mean"] = df.groupby('Player_ID')["Height"].transform('mean')
 df.drop(['X1', 'X2'], axis=1, inplace=True) # got rid of columns
 df.drop([1, 2]).head() # got rid of rows
 ```
@@ -434,22 +436,26 @@ plt.show()
 # Another way to do it could be: fig, ax = plt.subplots(2, 1, sharex=True)
 ```
 
-Below a small demonstration of the main graphics and tables that can be used
+Below a small demonstration of the main graphics and tables that can be used with matplotlib and seaborn ([example gallery using seaborn](http://seaborn.pydata.org/examples/index.html))
 
 ```python3
 # Import visualization libraries
 import matplotlib.pyplot as plt
 import seaborn as sns; sns.set()
+
+# Change the display settings
 %config InlineBackend.figure_format = 'retina' # Graphics are more sharp. 'svg'/'png'
+plt.rcParams['figure.figsize'] = 8, 5
+plt.rcParams['image.cmap'] = 'viridis'
 
 # Histograms and density plots
 df[features].hist(figsize=(10, 4));
 df[features].plot(kind='density', subplots=True, layout=(1, 2),
-                sharex=False, figsize=(10, 4));
+                sharex=False, figsize=(10, 4)); # see 'kind='bar', or 'kde', 'scatter', etc
 sns.distplot(df['feature']);
 
 # Box plot
-sns.boxplot(x='feature', data=df);
+sns.boxplot(x='num_feature', y='cat_feature', data=df, orient='h');
 
 # Violin plot
 _, axes = plt.subplots(1, 2, sharey=True, figsize=(6, 4))
@@ -463,7 +469,8 @@ sns.countplot(x='cat_feat_2', data=df, ax=axes[1]);
 
 # Correlation matrix
 corr_matrix = df[num_features].corr()
-sns.heatmap(corr_matrix);
+sns.heatmap(corr_matrix, annot=True, fmt=".1f", linewidths=.5);
+# heatmap allows to view the distribution of a num over two cat
 
 # Scatter plot and Scatter plot matrix
 plt.scatter(df['X1'], df['X2']);
@@ -486,6 +493,45 @@ sns.violinplot(x='cat_feat', y='num_feat', data=df, ax=axes[1]);
 sns.catplot(x='cat_feat_1', y='num_feat', col='cat_feat_2',
                data=df[df['cat_feat_2'] < 3], kind="box",
                col_wrap=4, height=3, aspect=.8);
+```
+
+The plotly library can also be used, that allows creation of interactive plots within a Jupyter notebook without having to use Javascript ([doc](https://plot.ly/python/))
+
+```python3
+from plotly.offline import download_plotlyjs, init_notebook_mode, plot, iplot
+import plotly
+import plotly.graph_objs as go
+
+init_notebook_mode(connected=True)
+
+# For line plots
+trace0 = go.Scatter(  # Create a line (trace) for the GDP in France
+    x=df.index,
+    y=df['France GDP'],
+    name='France GDP'
+)
+
+trace1 = go.Scatter( # Create a line (trace) for the GDP in Germany
+    x=df.index,
+    y=df['Germany GDP'],
+    name='Germany GDP'
+) # To use bar chart, you could've replaced 'go.Scatter' by 'go.Bar' in both
+
+data = [trace0, trace1] # Define the data array
+layout = {'title': 'France vs Germany GDPs'} # Set the title
+
+fig = go.Figure(data=data, layout=layout) # Create a Figure and plot it
+iplot(fig, show_link=False) # Visualize
+
+plotly.offline.plot(fig, filename='gdp_stats.html', show_link=False); # Save the plot in an html file
+
+# For box plots
+data = []
+for country in df.Country.unique():
+    data.append(
+        go.Box(y=df[df.Country == country].height, name=country)
+    )
+iplot(data, show_link=False) # Visualize
 ```
 
 ## Prerequisite warmup
