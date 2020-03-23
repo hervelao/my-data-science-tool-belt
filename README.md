@@ -1,12 +1,20 @@
 # my-data-science-tool-belt
-**NOTICE:** This repository may help students better navigate in the Machine Learning seas!.
+**NOTICE:** This repository may help students better navigate in the Machine Learning seas 🌊!
+
 Don't hesitate to contribute to the repo ;)
+
+In the near future, I also intend to add a collection of minimal and clean implementations of machine learning algorithms (so that people would be able to easily play with the libraries), and add resources to help people better review their data science knowledge and prepare them for data science questions.
+
+To install all of my packages, you can use pip:
+```dash
+pip install -r requirements.txt
+```
 
 ## Summary
 
 <!-- - [A Parable by Sir Arthur Conan Doyle](#a-parable) -->
 - [The Zen of Python](#the-zen-of-python) 🐍
-- [Keyboard's shortcuts (Mac)](#keyboards-shortcuts-mac)
+- [Keyboard's shortcuts (Mac)](#keyboards-shortcuts-mac) 👩‍💻
   - [Sublime Text](#sublime-text)
   - [Terminal](#terminal)
   - [Chrome](#chrome)
@@ -19,33 +27,12 @@ Don't hesitate to contribute to the repo ;)
   - [How to merge your branch to the master branch](#how-to-merge-your-branch-to-the-master-branch)
   - [How to solve your conflicts](#how-to-solve-your-conflicts)
   - [How to fix an accidental commit to master](#how-to-fix-an-accidental-commit-to-master)
-- [Mastering Pandas](#mastering-pandas)
+- [Mastering Pandas](#mastering-pandas) 🐼
 - [Mastering Data Visualization](#mastering-data-visualization)
 - [Prerequisite warmup](#prerequisite-warmup)
 - [Interesting posts](#interesting-posts)
 - [Useful resources](#useful-resources)
 - [Going further](#going-further)
-
-<!-- ## A Parable
-
-The cheese-mites asked how the cheese got there,\
-And warmly debated the matter;\
-The Orthodox said that it came from the air,\
-And the Heretics said from the platter.\
-They argued it long and they argued it strong,\
-And I hear they are arguing now;\
-But of all the choice spirits who lived in the cheese,\
-Not one of them thought of a cow.
-
-BY SIR ARTHUR CONAN DOYLE
-
-Cast your eyes in the direction of the cow. 🐄 -->
-
-<!-- <div align="center">
-
-![cow](https://github.com/hervelao/my-data-science-tool-belt/blob/master/img/cow.jpg)
-
-</div> -->
 
 ## The Zen of Python
 
