@@ -1,14 +1,14 @@
 # my-data-science-tool-belt
 **NOTICE:** This repository may help students better navigate in the Machine Learning seas 🌊!
 
-Don't hesitate to contribute to the repo ;)
-
 In the near future, I also intend to add a collection of minimal and clean implementations of machine learning algorithms (so that people would be able to easily play with the libraries), and add resources to help people better review their data science knowledge and prepare them for data science questions.
 
-To install all of my packages, you can use pip:
+To install some of my packages, you can use pip:
 ```dash
 pip install -r requirements.txt
 ```
+
+Don't hesitate to contribute to the repo 🔥🔥🔥
 
 ## Summary
 
