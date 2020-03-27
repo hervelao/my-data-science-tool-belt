@@ -383,6 +383,7 @@ Leads you to the most appropriate graph for your data. It links to the code to b
 - Object Oriented Interface (METHOD 2).
 
 ### METHOD 1: MATLAB style plotting ([doc](https://matplotlib.org/3.1.1/api/_as_gen/matplotlib.pyplot.html#module-matplotlib.pyplot))
+
 ```python3
 plt.figure(figsize=(12, 8))
 plt.plot(x, y**2, c='black', lw=3, ls='--', label='quadratic')
@@ -402,6 +403,7 @@ plt.plot(x, y, c='blue')
 ```
 
 ### METHOD 2: Object Oriented Interface ([doc](https://matplotlib.org/api/axes_api.html#axis-labels-title-and-legend))
+
 ```python3
 # Get an empty figure, a fig object can contain one or more axes objects
 fig = plt.figure()
@@ -426,7 +428,7 @@ plt.show()
 # Another way to do it could be: fig, ax = plt.subplots(2, 1, sharex=True)
 ```
 
-### Matplotlib & Seaborn Demonstration
+### Matplotlib & seaborn demonstration
 
 Below a small demonstration of the main graphics and tables that can be used with matplotlib and seaborn ([example gallery using seaborn](https://seaborn.pydata.org/index.html))
 
@@ -487,7 +489,7 @@ sns.catplot(x='cat_feat_1', y='num_feat', col='cat_feat_2',
                col_wrap=4, height=3, aspect=.8);
 ```
 
-### Plotly Demonstration
+### Plotly demonstration
 
 The plotly library can also be used, that allows creation of interactive plots within a Jupyter notebook without having to use Javascript ([doc](https://plot.ly/python/))
 
