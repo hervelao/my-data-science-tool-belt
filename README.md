@@ -12,7 +12,6 @@ Don't hesitate to contribute to the repo 🔥🔥🔥
 
 ## Summary
 
-<!-- - [A Parable by Sir Arthur Conan Doyle](#a-parable) -->
 - [The Zen of Python](#the-zen-of-python) 🐍
 - [Keyboard's shortcuts (Mac)](#keyboards-shortcuts-mac) 👩‍💻
   - [Sublime Text](#sublime-text)
@@ -29,6 +28,10 @@ Don't hesitate to contribute to the repo 🔥🔥🔥
   - [How to fix an accidental commit to master](#how-to-fix-an-accidental-commit-to-master)
 - [Mastering Pandas](#mastering-pandas) 🐼
 - [Mastering Data Visualization](#mastering-data-visualization)
+  - [METHOD 1: MATLAB style plotting](#method-1:-matlab-style-plotting)
+  - [METHOD 2: Object Oriented Interface](#method-2:-object-oriented-interface)
+  - [Matplotlib & Seaborn demonstration](#matplotlib-&-seaborn-demonstration)
+  - [Plotly demonstration](#plotly-demonstration)
 - [Prerequisite warmup](#prerequisite-warmup)
 - [Interesting posts](#interesting-posts)
 - [Useful resources](#useful-resources)
@@ -379,7 +382,7 @@ Leads you to the most appropriate graph for your data. It links to the code to b
 - MATLAB style plotting using pyplot (METHOD 1);
 - Object Oriented Interface (METHOD 2).
 
-**METHOD 1** ([doc](https://matplotlib.org/3.1.1/api/_as_gen/matplotlib.pyplot.html#module-matplotlib.pyplot))
+### METHOD 1: MATLAB style plotting ([doc](https://matplotlib.org/3.1.1/api/_as_gen/matplotlib.pyplot.html#module-matplotlib.pyplot))
 ```python3
 plt.figure(figsize=(12, 8))
 plt.plot(x, y**2, c='black', lw=3, ls='--', label='quadratic')
@@ -398,7 +401,7 @@ plt.subplot(2,1,2)
 plt.plot(x, y, c='blue')
 ```
 
-**METHOD 2** ([doc](https://matplotlib.org/api/axes_api.html#axis-labels-title-and-legend))
+### METHOD 2: Object Oriented Interface ([doc](https://matplotlib.org/api/axes_api.html#axis-labels-title-and-legend))
 ```python3
 # Get an empty figure, a fig object can contain one or more axes objects
 fig = plt.figure()
@@ -423,7 +426,9 @@ plt.show()
 # Another way to do it could be: fig, ax = plt.subplots(2, 1, sharex=True)
 ```
 
-Below a small demonstration of the main graphics and tables that can be used with matplotlib and seaborn ([example gallery using seaborn](http://seaborn.pydata.org/examples/index.html))
+### Matplotlib & Seaborn Demonstration
+
+Below a small demonstration of the main graphics and tables that can be used with matplotlib and seaborn ([example gallery using seaborn](https://seaborn.pydata.org/index.html))
 
 ```python3
 # Import visualization libraries
@@ -481,6 +486,8 @@ sns.catplot(x='cat_feat_1', y='num_feat', col='cat_feat_2',
                data=df[df['cat_feat_2'] < 3], kind="box",
                col_wrap=4, height=3, aspect=.8);
 ```
+
+### Plotly Demonstration
 
 The plotly library can also be used, that allows creation of interactive plots within a Jupyter notebook without having to use Javascript ([doc](https://plot.ly/python/))
 
