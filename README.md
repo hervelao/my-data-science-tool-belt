@@ -28,8 +28,8 @@ Don't hesitate to contribute to the repo 🔥🔥🔥
   - [How to fix an accidental commit to master](#how-to-fix-an-accidental-commit-to-master)
 - [Mastering Pandas](#mastering-pandas) 🐼
 - [Mastering Data Visualization](#mastering-data-visualization)
-  - [METHOD 1: MATLAB style plotting](#method-1:-matlab-style-plotting)
-  - [METHOD 2: Object Oriented Interface](#method-2:-object-oriented-interface)
+  - [METHOD 1: MATLAB style plotting](#method-1-matlab-style-plotting-doc)
+  - [METHOD 2: Object Oriented Interface](#method-2-object-oriented-interface-doc)
   - [Matplotlib & Seaborn demonstration](#matplotlib-&-seaborn-demonstration)
   - [Plotly demonstration](#plotly-demonstration)
 - [Prerequisite warmup](#prerequisite-warmup)
