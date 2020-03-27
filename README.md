@@ -30,7 +30,7 @@ Don't hesitate to contribute to the repo 🔥🔥🔥
 - [Mastering Data Visualization](#mastering-data-visualization)
   - [METHOD 1: MATLAB style plotting](#method-1-matlab-style-plotting-doc)
   - [METHOD 2: Object Oriented Interface](#method-2-object-oriented-interface-doc)
-  - [Matplotlib & Seaborn demonstration](#matplotlib-&-seaborn-demonstration)
+  - [Matplotlib & Seaborn demonstration](#matplotlib--seaborn-demonstration)
   - [Plotly demonstration](#plotly-demonstration)
 - [Prerequisite warmup](#prerequisite-warmup)
 - [Interesting posts](#interesting-posts)
@@ -489,7 +489,7 @@ sns.catplot(x='cat_feat_1', y='num_feat', col='cat_feat_2',
                col_wrap=4, height=3, aspect=.8);
 ```
 
-### Plotly demonstration
+### Plotly demonstration
 
 The plotly library can also be used, that allows creation of interactive plots within a Jupyter notebook without having to use Javascript ([doc](https://plot.ly/python/))
 
