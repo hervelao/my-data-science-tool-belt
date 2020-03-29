@@ -32,6 +32,7 @@ Don't hesitate to contribute to the repo 🔥🔥🔥
   - [METHOD 2: Object Oriented Interface](#method-2-object-oriented-interface-doc)
   - [Matplotlib & Seaborn demonstration](#matplotlib--seaborn-demonstration)
   - [Plotly demonstration](#plotly-demonstration)
+- [Mastering SQL](#mastering-sql)
 - [Prerequisite warmup](#prerequisite-warmup)
 - [Interesting posts](#interesting-posts)
 - [Useful resources](#useful-resources)
@@ -528,6 +529,38 @@ for country in df.Country.unique():
         go.Box(y=df[df.Country == country].height, name=country)
     )
 iplot(data, show_link=False) # Visualize
+```
+
+## Mastering SQL
+
+
+```sql
+# SELECT: used to select data from a database
+SELECT * FROM table_name;
+# DISTINCT: filters away duplicate values and returns rows of specified column
+SELECT DISTINCT column_name;
+# WHERE: used to filter records/rows
+SELECT column1, column2 FROM table_name WHERE condition;
+# ORDER BY: used to sort the result-set in ascending or descending order
+SELECT * FROM table_name ORDER BY column1 ASC, column2;
+# LIMIT: used to specify the number of records to return from top of table
+LIMIT 10;
+# LIKE: operator used in a WHERE clause to search for a specific pattern in a column
+LIKE ‘Harry_Potter_%_%’ # underscore represents a single character
+# GROUP BY: statement often used with aggregate functions (COUNT, MAX, MIN, SUM, AVG) to group the result-set by one or more columns
+GROUP BY column_name1 ORDER BY COUNT(column_name2) DESC;
+# HAVING: this clause was added to SQL because the WHERE keyword could not be used with aggregate functions
+GROUP BY column_name2 HAVING COUNT(column_name1) > 42;
+
+MIN() (or MAX()) # Returns the minimum (or maximum) of input values
+AVG() (or SUM()) # Returns the average (or sum) of input values
+COUNT() # Returns the number of rows in the input
+
+FIRST_VALUE() (or LAST_VALUE()) # Returns the first (or last) value in the input
+LEAD() (and LAG()) # Returns the value on a subsequent (or preceding) row
+
+ROW_NUMBER() # Returns the order in which rows appear in the input (starting with 1)
+RANK() # All rows with the same value in the ordering column receive the same rank value, where the next row receives a rank value which increments by the number of rows with the previous rank value.
 ```
 
 ## Prerequisite warmup
