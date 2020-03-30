@@ -533,8 +533,14 @@ iplot(data, show_link=False) # Visualize
 
 ## Mastering SQL
 
+**CRUD**
 
 ```sql
+### CREATE
+INSERT INTO table_name (column1, column2) VALUES (value1, value2);
+INSERT INTO table_name VALUES (value1, value2 …);
+
+### READ
 # SELECT: used to select data from a database
 SELECT * FROM table_name;
 # DISTINCT: filters away duplicate values and returns rows of specified column
@@ -546,11 +552,23 @@ SELECT * FROM table_name ORDER BY column1 ASC, column2;
 # LIMIT: used to specify the number of records to return from top of table
 LIMIT 10;
 # LIKE: operator used in a WHERE clause to search for a specific pattern in a column
-LIKE ‘Harry_Potter_%_%’ # underscore represents a single character
+LIKE ‘Harry_Potter_%_Azkaban’ # underscore represents a single character
 # GROUP BY: statement often used with aggregate functions (COUNT, MAX, MIN, SUM, AVG) to group the result-set by one or more columns
 GROUP BY column_name1 ORDER BY COUNT(column_name2) DESC;
 # HAVING: this clause was added to SQL because the WHERE keyword could not be used with aggregate functions
 GROUP BY column_name2 HAVING COUNT(column_name1) > 42;
+# WITH: often used for retrieving hierarchical data or re-using temp result set several times in a query. Also referred to as "Common Table Expression"
+WITH trips_by_day AS (
+  SELECT c0.* FROM categories AS c0 WHERE EXTRACT(YEAR FROM start_date) = 2020
+)
+SELECT *,
+SUM(num_trips)
+    OVER (
+         PARTITION BY id
+         ORDER BY trip_date
+         ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW
+         ) AS cumulative_trips
+FROM trips_by_day
 
 MIN() (or MAX()) # Returns the minimum (or maximum) of input values
 AVG() (or SUM()) # Returns the average (or sum) of input values
@@ -561,6 +579,14 @@ LEAD() (and LAG()) # Returns the value on a subsequent (or preceding) row
 
 ROW_NUMBER() # Returns the order in which rows appear in the input (starting with 1)
 RANK() # All rows with the same value in the ordering column receive the same rank value, where the next row receives a rank value which increments by the number of rows with the previous rank value.
+
+### UPDATE
+UPDATE table_name SET column1 = value1, column2 = value2 WHERE condition;
+UPDATE table_name SET column_name = value;
+
+### DELETE
+DELETE FROM table_name WHERE condition;
+DELETE * FROM table_name;
 ```
 
 ## Prerequisite warmup
