@@ -3,7 +3,7 @@ dask==2.12.0
 dask-xgboost==0.1.10
 docker==4.2.0
 fbprophet==0.6
-ipython==5.5.0
+ipython==7.16.3
 joblib==0.14.1
 kaggle==1.5.6
 Keras==2.3.1
